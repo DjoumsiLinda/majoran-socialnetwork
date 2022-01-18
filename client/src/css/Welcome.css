@@ -1,0 +1,12 @@
+#welcome {
+    background-color: burlywood;
+    border: 3px solid black;
+    width: 800px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#welcome img {
+    width: 50%;
+}

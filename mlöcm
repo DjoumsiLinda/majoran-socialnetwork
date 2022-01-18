@@ -1,0 +1,5 @@
+ id |  first   |   last   |     email      | password |         created_at         
+----+----------+----------+----------------+----------+----------------------------
+  1 | usertest | usertest | usertest@yahoo | 123      | 2022-01-18 15:31:07.914995
+(1 row)
+
