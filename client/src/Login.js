@@ -1,14 +1,12 @@
-import "./css/Registration.css";
+import "./css/Login.css";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Registration extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            firstname: "",
-            lastname: "",
             email: "",
             password: "",
             error: false,
@@ -24,14 +22,11 @@ export default class Registration extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
+        console.log("You want to submit");
 
-        console.log("handleSubmit", this.state);
-
-        fetch("/registration.json", {
+        fetch("/login.json", {
             method: "POST",
             body: JSON.stringify({
-                first: this.state.firstname,
-                last: this.state.lastname,
                 email: this.state.email,
                 password: this.state.password,
             }),
@@ -51,28 +46,12 @@ export default class Registration extends Component {
 
     render() {
         return (
-            <div id="regis">
-                <h2>Join Linda Fashion</h2>
+            <div id="lo">
+                <h2>Login</h2>
                 {this.state.error && (
-                    <p className="error">
-                        There are already an account with these emails adresse!
-                    </p>
+                    <p className="error">Oups, Please try again!</p>
                 )}
-                <form className="registration" onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        name="firstname"
-                        placeholder="First Name"
-                        value={this.state.firstname}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="lastname"
-                        placeholder="Last Name"
-                        value={this.state.lastname}
-                        onChange={this.handleChange}
-                    />
+                <form className="login" onSubmit={this.handleSubmit}>
                     <input
                         type="email"
                         name="email"
@@ -87,9 +66,10 @@ export default class Registration extends Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
-                    <button type="submit">Register</button>
+                    <button type="submit">Login</button>
                 </form>
-                <Link to="/login">Click here to Log in!</Link>
+                <Link to="/password">Reset Password</Link>
+                <Link to="/">Registration</Link>
             </div>
         );
     }

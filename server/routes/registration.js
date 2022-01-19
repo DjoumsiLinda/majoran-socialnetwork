@@ -5,6 +5,9 @@ const router = express.Router();
 
 router.post("/registration.json", (req, res) => {
     const { first, last, email, password } = req.body;
+    if (!first || !last || !email || !password) {
+        res.sendStatus(500);
+    }
     if (first && last && email && password) {
         bcrypt.hash(password, 12).then((digest) => {
             db.addUser(first, last, email, digest)

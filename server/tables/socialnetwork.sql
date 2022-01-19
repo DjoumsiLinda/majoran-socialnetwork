@@ -1,11 +1,11 @@
 -- sudo service postgresql start
 -- createdb socialnetwork
--- psql -d socialnetwork -f tables/socialnetwork.sql
+-- psql -d socialnetwork -f server/tables/socialnetwork.sql
 -- heroku pg:psql -f tables/socialnetwork.sql
 
 DROP TABLE IF EXISTS users;
 
-
+-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ users tables
 CREATE TABLE users(
       id SERIAL PRIMARY KEY,
       first VARCHAR NOT NULL CHECK (first != ''),

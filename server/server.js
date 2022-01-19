@@ -5,6 +5,8 @@ const compression = require("compression");
 const cookieSession = require("cookie-session");
 const path = require("path");
 const registration = require("./routes/registration.js");
+const login = require("./routes/login.js");
+const resetPassword = require("./routes/resetPassword.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ cookieSession
 // sessionSecret für heroku
@@ -29,6 +31,9 @@ server.use(compression());
 server.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 server.use(registration);
+server.use(login);
+server.use(resetPassword);
+
 server.get("/user/id.json", (req, res) => {
     if (req.session) {
         res.json({ userId: req.session.userId });
