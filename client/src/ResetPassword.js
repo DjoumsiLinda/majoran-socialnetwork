@@ -9,11 +9,12 @@ export default class ResetPassword extends Component {
         this.state = {
             // 1 = start, 2 = verify, 3 = success
             error: false,
-            step: 2,
+            step: 1,
             email: "",
             code: "",
             password: "",
             codeId: "",
+            expiration: false,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,9 +26,8 @@ export default class ResetPassword extends Component {
     }
     handleSubmit(evt) {
         evt.preventDefault();
-        console.log("You want to submit");
         if (this.state.step === 1) {
-            fetch("/resetPassword/step1.json", {
+            fetch("/resetPassword/start.json", {
                 method: "POST",
                 body: JSON.stringify({
                     email: this.state.email,
@@ -48,7 +48,7 @@ export default class ResetPassword extends Component {
                     this.setState({ codeId: data });
                 });
         } else if (this.state.step === 2) {
-            fetch("/resetPassword/step2.json", {
+            fetch("/resetPassword/verify.json", {
                 method: "POST",
                 body: JSON.stringify({
                     codeId: this.state.codeId,
@@ -59,13 +59,35 @@ export default class ResetPassword extends Component {
                 headers: {
                     "content-type": "application/json",
                 },
-            }).then((res) => {
-                if (res.ok) {
-                    this.setState({ step: 3 });
-                } else {
-                    this.setState({ error: true });
-                }
-            });
+            })
+                .then((res) => {
+                    if (!res.ok) {
+                        this.setState({ error: true });
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then((erg) => {
+                    if ("expiration" in erg) {
+                        this.setState({ expiration: true });
+                    } else {
+                        this.setState({ step: 3 });
+                        //delete secretcode in db
+                        fetch("/resetPassword/success.json", {
+                            method: "POST",
+                            body: JSON.stringify({
+                                codeId: this.state.codeId,
+                            }),
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                        }).then((res) => {
+                            if (!res.ok) {
+                                console.log("Delete codeId not successfull");
+                            }
+                        });
+                    }
+                });
         }
     }
     render() {
@@ -78,7 +100,9 @@ export default class ResetPassword extends Component {
                         registered
                     </p>
                     {this.state.error && (
-                        <p className="error">Oups, Please try again!</p>
+                        <p className="errorstep1">
+                            Oups,Sorry sommething is wrong. Please try again!
+                        </p>
                     )}
                     <form
                         className="resetPassword"
@@ -100,7 +124,15 @@ export default class ResetPassword extends Component {
                 <div id="reset">
                     <h2>Reset Password</h2>
                     {this.state.error && (
-                        <p className="error">Oups, Please try again!</p>
+                        <p className="error">
+                            Oups,Sorry sommething is wrong. Please try again!
+                        </p>
+                    )}
+                    {this.state.expiration && (
+                        <p className="error">
+                            Oups,code has expired!{" "}
+                            <Link to="/password"> Reset Password</Link>
+                        </p>
                     )}
                     <form
                         className="resetPassword"

@@ -5,7 +5,7 @@ const db = require("../db.js");
 const router = express.Router();
 const ses = require("../ses.js");
 
-router.post("/resetPassword/step1.json", (request, response) => {
+router.post("/resetPassword/start.json", (request, response) => {
     const { email } = request.body;
     if (!email) {
         response.sendStatus(500);
@@ -45,24 +45,45 @@ router.post("/resetPassword/step1.json", (request, response) => {
         });
 });
 
-router.post("/resetPassword/step2.json", (request, response) => {
+router.post("/resetPassword/verify.json", (request, response) => {
     const { codeId, email, code, password } = request.body;
     if (!email || !code || !password || !codeId) {
         response.sendStatus(500);
     }
-    db.getCode(codeId).then((codeErg) => {
-        if (codeErg.rows[0].code === code) {
-            bcrypt.hash(password, 12).then((digest) => {
-                db.resetPassword(digest, email)
-                    .then((result) => {
-                        response.json(result);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        response.sendStatus(500);
+    db.getCode(codeId)
+        .then((codeErg) => {
+            if (codeErg) {
+                if (codeErg.rows[0].code === code) {
+                    bcrypt.hash(password, 12).then((digest) => {
+                        db.resetPassword(digest, email)
+                            .then((result) => {
+                                response.json(result);
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                response.sendStatus(500);
+                            });
                     });
-            });
-        }
-    });
+                }
+            }
+        })
+        .catch(() => {
+            response.json({ expiration: "true" });
+        });
+});
+router.post("/resetPassword/success.json", (request, response) => {
+    const { codeId } = request.body;
+    if (!codeId) {
+        response.sendStatus(500);
+    }
+    db.deleteCode(codeId)
+        .then((codeErg) => {
+            if (codeErg) {
+                response.json(codeErg.rowCount);
+            }
+        })
+        .catch(() => {
+            response.sendStatus(500);
+        });
 });
 module.exports = router;
