@@ -4,6 +4,7 @@
     width: 800px;
     height: 95vh;
     display: flex;
+    margin-left: 25%;
     flex-direction: column;
     align-items: center;
 }

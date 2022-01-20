@@ -1,8 +1,8 @@
 -- sudo service postgresql start
 -- createdb socialnetwork
--- psql -d socialnetwork -f server/tables/socialnetwork.sql
--- heroku pg:psql -f tables/socialnetwork.sql
-
+-- psql -d socialnetwork -f server/tables/users.sql
+-- heroku pg:psql -f tables/users.sql
+DROP TABLE IF EXISTS reset_codes;
 DROP TABLE IF EXISTS users;
 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ users tables
@@ -12,6 +12,7 @@ CREATE TABLE users(
       last VARCHAR NOT NULL CHECK (last != ''),
       email VARCHAR NOT NULL UNIQUE CHECK (email != ''),
       password VARCHAR NOT NULL CHECK (password != ''),
+      url VARCHAR ,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

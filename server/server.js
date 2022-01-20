@@ -7,6 +7,7 @@ const path = require("path");
 const registration = require("./routes/registration.js");
 const login = require("./routes/login.js");
 const resetPassword = require("./routes/resetPassword.js");
+const app = require("./routes/app.js");
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ cookieSession
 // sessionSecret für heroku
@@ -33,12 +34,14 @@ server.use(express.static(path.join(__dirname, "..", "client", "public")));
 server.use(registration);
 server.use(login);
 server.use(resetPassword);
+server.use(app);
 
 server.get("/user/id.json", (req, res) => {
     if (req.session) {
         res.json({ userId: req.session.userId });
+    } else {
+        res.json({ userId: undefined });
     }
-    res.json({ userId: undefined });
 });
 server.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));

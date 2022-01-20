@@ -21,6 +21,20 @@ module.exports.addUser = (first, last, email, password) => {
         [first, last, email, password]
     );
 };
+module.exports.addImageInUsersTable = (url, id) => {
+    return db.query(
+        `UPDATE users
+        SET url = $1 
+        WHERE id=$2;`,
+        [url, id]
+    );
+};
+module.exports.getUsers = (id) => {
+    return db.query(
+        `SELECT first, last, email, url FROM users where id = $1;`,
+        [id]
+    );
+};
 module.exports.getPassword = (email) => {
     return db.query(`SELECT id, password FROM users where email = $1;`, [
         email,
