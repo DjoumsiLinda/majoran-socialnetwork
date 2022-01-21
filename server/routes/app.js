@@ -56,4 +56,16 @@ router.post(
             });
     }
 );
+
+router.post("/bioEditor.json", (req, res) => {
+    const { bio } = req.body;
+    db.addBio(bio, req.session.userId)
+        .then((update) => {
+            res.json(update.rowCountt);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;

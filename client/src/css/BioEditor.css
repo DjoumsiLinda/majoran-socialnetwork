@@ -1,0 +1,43 @@
+#bioEditor {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+#bioEditor textarea {
+    width: 400px;
+    height: 100px;
+    margin-bottom: 5%;
+}
+#bioEditor button {
+    font-size: 20px;
+    color: white;
+    width: 80px;
+    height: 30px;
+    background-color: green;
+    justify-content: center;
+}
+#btxEditor {
+    margin-top: -15%;
+    display: flex;
+    flex-direction: row;
+}
+#btxEditor p {
+    font-size: 20px;
+}
+#btxEditor button {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0px;
+    margin-top: 1%;
+    font-size: 17px;
+}
+#btx {
+    background-color: transparent;
+    border: 0px;
+    text-decoration: underline;
+    font-size: 20px;
+    cursor: pointer;
+}

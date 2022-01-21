@@ -1,8 +1,8 @@
-import "./css/ProfilePicture.css";
+import "../css/ProfilePicture.css";
 
 export default function ProfilePicture(props) {
     return (
-        <div id="profile">
+        <div id="profilePicture">
             <img
                 className="profile-picture"
                 src={props.picture || "/assets/logo.png"}

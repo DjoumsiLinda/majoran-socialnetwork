@@ -31,7 +31,7 @@ module.exports.addImageInUsersTable = (url, id) => {
 };
 module.exports.getUsers = (id) => {
     return db.query(
-        `SELECT first, last, email, url FROM users where id = $1;`,
+        `SELECT first, last, email, url, bio FROM users where id = $1;`,
         [id]
     );
 };
@@ -69,4 +69,13 @@ module.exports.getCode = (CodeId) => {
 
 module.exports.deleteCode = (id) => {
     return db.query(`delete from reset_codes where id=$1`, [id]);
+};
+
+module.exports.addBio = (bio, id) => {
+    return db.query(
+        `UPDATE users
+        SET bio = $1
+        WHERE id = $2;`,
+        [bio, id]
+    );
 };

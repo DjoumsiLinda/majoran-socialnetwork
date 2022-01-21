@@ -1,6 +1,7 @@
 import { Component } from "react";
-import "./css/App.css";
+import "../css/App.css";
 import ProfilePicture from "./ProfilePicture.js";
+import Profile from "./Profile.js";
 import Uploader from "./Uploader.js";
 
 export default class App extends Component {
@@ -12,11 +13,14 @@ export default class App extends Component {
             email: "",
             url: "",
             uploaderVisible: false,
+            bio: "",
         };
         this.componentVisible = this.componentVisible.bind(this);
+        this.setbio = this.setbio.bind(this);
     }
 
     componentDidMount() {
+        console.log("you first");
         fetch("/app.json")
             .then((res) => {
                 if (res.ok) {
@@ -26,37 +30,57 @@ export default class App extends Component {
                 }
             })
             .then((users) => {
-                this.setState({ firstname: users.first });
-                this.setState({ lastname: users.last });
-                this.setState({ email: users.email });
-                this.setState({ url: users.url });
+                this.setState({
+                    firstname: users.first,
+                    lastname: users.last,
+                    email: users.email,
+                    url: users.url,
+                    bio: users.bio,
+                });
             });
     }
 
     componentVisible(url) {
         this.setState({ uploaderVisible: !this.state.uploaderVisible });
-        console.log("1:", this.state.url);
         if (url) {
             this.setState({ url: url });
         } else {
             this.setState({ url: this.state.url });
         }
-        console.log("2:", this.state.url);
+    }
+    setbio(bio) {
+        this.setState({
+            bio: bio,
+        });
     }
 
     render() {
+        if (!this.state.email) {
+            return <p>Waiting</p>;
+        }
         return (
             <div>
                 <div id="app">
-                    <h1>Linda Fashion</h1>
+                    <h1>Linda~Fashion</h1>
                     <img src="/assets/logo.png" />
                 </div>
                 <div id="all">
-                    <ProfilePicture
+                    <header>
+                        <ProfilePicture
+                            picture={this.state.url}
+                            firstname={this.state.firstname}
+                            lastname={this.state.lastname}
+                            email={this.state.email}
+                            componentVisible={this.componentVisible}
+                        />
+                    </header>
+                    <Profile
                         picture={this.state.url}
                         firstname={this.state.firstname}
                         lastname={this.state.lastname}
                         email={this.state.email}
+                        bio={this.state.bio}
+                        setbio={this.setbio}
                         componentVisible={this.componentVisible}
                     />
                     {this.state.uploaderVisible && (

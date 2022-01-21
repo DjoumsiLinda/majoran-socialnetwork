@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./css/Uploader.css";
+import "../css/Uploader.css";
 export default class Uploader extends Component {
     constructor(props) {
         super(props);

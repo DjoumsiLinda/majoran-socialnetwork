@@ -1,0 +1,29 @@
+.profile {
+    margin-left: 2%;
+    margin-top: 2%;
+    background-color: snow;
+    width: 95%;
+    height: 70vh;
+    display: flex;
+    flex-direction: row;
+}
+.profile #right {
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.profile p {
+    font-size: 30px;
+}
+.profile #profilePicture {
+    cursor: pointer;
+    border-bottom: 0px;
+    background-color: transparent;
+    margin: 2%;
+}
+.profile .profile-picture {
+    margin-left: 0%;
+    background-color: white;
+    height: 300px;
+    width: 300px;
+    border: 0px;
+}

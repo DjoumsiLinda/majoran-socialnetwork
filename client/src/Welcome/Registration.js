@@ -1,4 +1,4 @@
-import "./css/Registration.css";
+import "../css/Registration.css";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 

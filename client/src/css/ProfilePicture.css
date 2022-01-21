@@ -1,8 +1,10 @@
-#profile {
-    margin-left: 95%;
-    cursor: pointer;
+#profilePicture {
+    border-bottom: 3px solid rgba(299, 199, 0, 1);
+    background-color: rgba(299, 199, 0, 0.2);
 }
 .profile-picture {
+    cursor: pointer;
+    margin-left: 95%;
     background-color: white;
     height: 100px;
     width: 100px;

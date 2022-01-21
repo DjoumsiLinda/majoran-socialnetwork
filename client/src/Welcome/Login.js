@@ -1,4 +1,4 @@
-import "./css/Login.css";
+import "../css/Login.css";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
