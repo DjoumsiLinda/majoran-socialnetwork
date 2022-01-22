@@ -9,7 +9,7 @@ export default class ResetPassword extends Component {
         this.state = {
             // 1 = start, 2 = verify, 3 = success
             error: false,
-            step: 1,
+            step: 3,
             email: "",
             code: "",
             password: "",
@@ -97,7 +97,7 @@ export default class ResetPassword extends Component {
                     <h2>Reset Password</h2>
                     <p>
                         Please enter your email address with which you
-                        registered
+                        registered!
                     </p>
                     {this.state.error && (
                         <p className="errorstep1">
@@ -111,7 +111,7 @@ export default class ResetPassword extends Component {
                         <input
                             type="email"
                             name="email"
-                            placeholder="E-Mail"
+                            placeholder=" E-Mail"
                             value={this.state.email}
                             onChange={this.handleChange}
                         />
@@ -142,15 +142,15 @@ export default class ResetPassword extends Component {
                         <input
                             type="text"
                             name="code"
-                            placeholder="Code"
+                            placeholder=" Code"
                             value={this.state.code}
                             onChange={this.handleChange}
                         />
                         <p>Please enter a new Password</p>
                         <input
                             type="password"
-                            name="password"
-                            placeholder="Password"
+                            name=" password"
+                            placeholder=" Password"
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
@@ -160,7 +160,7 @@ export default class ResetPassword extends Component {
             );
         } else if (this.state.step === 3) {
             return (
-                <div>
+                <div id="success">
                     <h2>Password successfull Reset!</h2>
                     <p>
                         You can now <Link to="/login">Log in</Link> with your

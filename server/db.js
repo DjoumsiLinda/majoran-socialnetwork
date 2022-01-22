@@ -1,4 +1,5 @@
 /*
+-- https://bcrypt-generator.com/
 -- sudo service postgresql start
 -- createdb socialnetwork
 -- psql -d socialnetwork -f server/tables/socialnetwork.sql

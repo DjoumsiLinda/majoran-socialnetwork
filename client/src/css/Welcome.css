@@ -1,13 +1,35 @@
 #welcome {
-    background-color: burlywood;
-    border: 3px solid black;
-    width: 800px;
-    height: 95vh;
+    margin-top: 10%;
     display: flex;
-    margin-left: 25%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.left {
+    font-size: 25px;
+    width: 500px;
+}
+.left h1 {
+    margin-bottom: 40px;
+}
+.recht {
+    background-color: rgb(9, 230, 232);
+    border-radius: 5%;
+    width: 30%;
+    height: 500px;
+    margin-top: -10px;
+    margin-left: -400px;
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
-#welcome img {
+/*#welcome img {
     width: 40%;
-}
+    object-fit: cover;
+    /*filter: grayscale(100%);*/
+
+/*#welcome img:hover {
+    cursor: url("/assets/logo.png"), auto;
+    filter: contrast(100%);
+}*/

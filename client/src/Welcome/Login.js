@@ -47,7 +47,7 @@ export default class Login extends Component {
     render() {
         return (
             <div id="lo">
-                <h2>Login</h2>
+                <h2>Join LKD~Fashion</h2>
                 {this.state.error && (
                     <p className="error">Oups, Please try again!</p>
                 )}
@@ -55,14 +55,14 @@ export default class Login extends Component {
                     <input
                         type="email"
                         name="email"
-                        placeholder="E-Mail"
+                        placeholder=" E-Mail-Adresse"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
                     <input
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder=" Password"
                         value={this.state.password}
                         onChange={this.handleChange}
                     />

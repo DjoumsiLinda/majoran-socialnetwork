@@ -61,7 +61,7 @@ export default class App extends Component {
         return (
             <div>
                 <div id="app">
-                    <h1>Linda~Fashion</h1>
+                    <h1>LKD~Fashion</h1>
                     <img src="/assets/logo.png" />
                 </div>
                 <div id="all">
@@ -74,15 +74,18 @@ export default class App extends Component {
                             componentVisible={this.componentVisible}
                         />
                     </header>
-                    <Profile
-                        picture={this.state.url}
-                        firstname={this.state.firstname}
-                        lastname={this.state.lastname}
-                        email={this.state.email}
-                        bio={this.state.bio}
-                        setbio={this.setbio}
-                        componentVisible={this.componentVisible}
-                    />
+                    <div id="tocenter">
+                        <Profile
+                            picture={this.state.url}
+                            firstname={this.state.firstname}
+                            lastname={this.state.lastname}
+                            email={this.state.email}
+                            bio={this.state.bio}
+                            setbio={this.setbio}
+                            componentVisible={this.componentVisible}
+                        />
+                    </div>
+
                     {this.state.uploaderVisible && (
                         <Uploader componentVisible={this.componentVisible} />
                     )}

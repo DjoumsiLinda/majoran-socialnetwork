@@ -1,15 +1,17 @@
 .profile {
-    margin-left: 2%;
-    margin-top: 2%;
-    background-color: snow;
-    width: 95%;
-    height: 70vh;
+    background-color: rgb(9, 230, 232);
+    width: 60%;
+    height: 50vh;
     display: flex;
     flex-direction: row;
+    margin-top: 50px;
 }
 .profile #right {
-    margin-left: 2%;
-    margin-top: 1%;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+#right h2 {
+    margin-bottom: 15px;
 }
 .profile p {
     font-size: 30px;

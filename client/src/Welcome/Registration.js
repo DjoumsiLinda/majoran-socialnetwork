@@ -52,7 +52,7 @@ export default class Registration extends Component {
     render() {
         return (
             <div id="regis">
-                <h2>Join Linda Fashion</h2>
+                <h2>Join LKD~Fashion</h2>
                 {this.state.error && (
                     <p className="error">
                         There are already an account with these emails adresse!
@@ -62,28 +62,28 @@ export default class Registration extends Component {
                     <input
                         type="text"
                         name="firstname"
-                        placeholder="First Name"
+                        placeholder=" First Name"
                         value={this.state.firstname}
                         onChange={this.handleChange}
                     />
                     <input
                         type="text"
                         name="lastname"
-                        placeholder="Last Name"
+                        placeholder=" Last Name"
                         value={this.state.lastname}
                         onChange={this.handleChange}
                     />
                     <input
                         type="email"
                         name="email"
-                        placeholder="E-Mail"
+                        placeholder=" E-Mail-Adresse"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
                     <input
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder=" Password"
                         value={this.state.password}
                         onChange={this.handleChange}
                     />

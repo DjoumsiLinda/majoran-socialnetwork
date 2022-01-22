@@ -21,3 +21,9 @@
     width: 98%;
     height: 98%;
 }
+#tocenter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}

@@ -46,7 +46,7 @@ export default class Uploader extends Component {
                 <button id="btx" onClick={this.closeBtx}>
                     X
                 </button>
-                <div>
+                <div id="de">
                     <form onSubmit={this.handleClick}>
                         <h2>Do you want to change your Profile Picture?</h2>
                         <div className="com">
