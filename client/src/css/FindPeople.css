@@ -1,0 +1,57 @@
+.findPeople {
+    overflow-y: scroll;
+    width: 600%;
+    height: 65vh;
+    background-color: rgb(238, 47, 255);
+    margin: 20px;
+}
+#contains {
+    margin-left: 7%;
+    margin-top: 2%;
+}
+#contains h2 {
+    margin-bottom: 10px;
+}
+#contains input {
+    border: 1px solid black;
+    width: 200px;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#people {
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-left: -3%;
+    margin-bottom: 25px;
+}
+#people img {
+    width: 150px;
+    height: 150px;
+}
+#cen {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+#people p {
+    margin-left: 15px;
+    font-weight: bold;
+}
+#more {
+    margin-left: 7%;
+    cursor: pointer;
+    border: 1px solid black;
+    width: 100px;
+    font-weight: bold;
+    background-color: turquoise;
+    margin-bottom: 20px;
+}

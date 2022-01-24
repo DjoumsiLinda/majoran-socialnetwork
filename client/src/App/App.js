@@ -1,6 +1,8 @@
-import { Component } from "react";
 import "../css/App.css";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Component } from "react";
 import ProfilePicture from "./ProfilePicture.js";
+import FindPeople from "./FindPeople.js";
 import Profile from "./Profile.js";
 import Uploader from "./Uploader.js";
 
@@ -66,6 +68,8 @@ export default class App extends Component {
                 </div>
                 <div id="all">
                     <header>
+                        {/*<Link to="/users">Find People</Link>*/}
+                        <a href="/users">Find People</a>
                         <ProfilePicture
                             picture={this.state.url}
                             firstname={this.state.firstname}
@@ -75,15 +79,22 @@ export default class App extends Component {
                         />
                     </header>
                     <div id="tocenter">
-                        <Profile
-                            picture={this.state.url}
-                            firstname={this.state.firstname}
-                            lastname={this.state.lastname}
-                            email={this.state.email}
-                            bio={this.state.bio}
-                            setbio={this.setbio}
-                            componentVisible={this.componentVisible}
-                        />
+                        <BrowserRouter>
+                            <Route exact path="/">
+                                <Profile
+                                    picture={this.state.url}
+                                    firstname={this.state.firstname}
+                                    lastname={this.state.lastname}
+                                    email={this.state.email}
+                                    bio={this.state.bio}
+                                    setbio={this.setbio}
+                                    componentVisible={this.componentVisible}
+                                />
+                            </Route>
+                            <Route path="/users">
+                                <FindPeople />
+                            </Route>
+                        </BrowserRouter>
                     </div>
 
                     {this.state.uploaderVisible && (

@@ -22,3 +22,18 @@ INSERT INTO users (first, last, email, password) VALUES (
     'usertest@yahoo',
     '123'
 );
+
+INSERT INTO users (first, last, email, password, url) VALUES (
+    'Corona',
+    'Virus',
+    'reminiscent.gull+coronaVirus@spicedling.email',
+    '$2a$12$pTK3hJoLSGAznK40FIQqpO5m1Z6CbGV7qOikJw9s5W/42ESVmgjce',
+    'https://spicedling.s3.amazonaws.com/BWVu6wHcKHRvQ5_13TEkLT74WUYEzs1h.jpeg'
+);
+
+INSERT INTO users (first, last, email, password) VALUES (
+    'Corona',
+    'Virus',
+    'reminiscent.gull@spicedling.email',
+    '$2a$12$wi/mE7K0T8Z.0bPCFRbUxu8l3fIZTTcaakoa6uIiWjtGS/1.caRyq'
+); 

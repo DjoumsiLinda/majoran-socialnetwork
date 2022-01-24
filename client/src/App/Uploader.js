@@ -56,7 +56,7 @@ export default class Uploader extends Component {
                                 name="file"
                                 onChange={this.handleChange}
                             />
-                            <button type="submit">Uplaod</button>
+                            <button type="submit">Upload</button>
                         </div>
                     </form>
                 </div>

@@ -36,6 +36,23 @@ module.exports.getUsers = (id) => {
         [id]
     );
 };
+
+module.exports.findPeople = (val) => {
+    return db.query(
+        `SELECT id, first, last, url, (
+            SELECT id AS lowestid FROM users WHERE first ILIKE $1 or last ILIKE $1 ORDER BY id ASC LIMIT 1
+        ) FROM users WHERE first ILIKE $1 or last ILIKE $1 ORDER BY first ASC LIMIT 9;`,
+        [val + "%"]
+    );
+};
+module.exports.findMorePeople = (lastId, val) => {
+    return db.query(
+        `SELECT id, first, last, url, (
+            SELECT id AS lowestid FROM users WHERE first ILIKE $1 or last ILIKE $1 ORDER BY id ASC LIMIT 1
+        ) FROM users WHERE (first ILIKE $1 or last ILIKE $1) and id < $2 ORDER BY first ASC LIMIT 9;`,
+        [val + "%", lastId]
+    );
+};
 module.exports.getPassword = (email) => {
     return db.query(`SELECT id, password FROM users where email = $1;`, [
         email,

@@ -37,7 +37,7 @@ export default class Login extends Component {
             console.log("res.ok", res.ok);
 
             if (res.ok) {
-                location.reload();
+                location.href = "/";
             } else {
                 this.setState({ error: true });
             }

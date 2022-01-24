@@ -68,4 +68,28 @@ router.post("/bioEditor.json", (req, res) => {
             res.sendStatus(500);
         });
 });
+
+router.get("/findPeople.json/find", (req, res) => {
+    console.log(req.query.after);
+    db.findPeople(req.query.after)
+        .then((peoples) => {
+            res.json(peoples.rows);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(500);
+        });
+});
+
+router.get("/findPeople.json/more", (req, res) => {
+    console.log(req.query.id, req.query.val);
+    db.findMorePeople(req.query.id, req.query.val)
+        .then((peoples) => {
+            res.json(peoples.rows);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;

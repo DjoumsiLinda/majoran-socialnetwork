@@ -1,18 +1,10 @@
-header {
-    background-color: rgba(255, 187, 0, 0.5);
-    filter: brightness(100%);
-    width: 110%;
-}
 #profilePicture {
     border-bottom: 3px solid rgba(299, 199, 0, 1);
     background-color: rgba(299, 199, 0, 0.2);
 }
 .profile-picture {
     cursor: pointer;
-    margin-top: 0.5%;
-    margin-left: 86%;
-    background-color: rgba(255, 187, 0, 0.5);
-    height: 100px;
+    height: 104.5%;
     width: 100px;
-    border: 3px solid black;
+    border: 1px solid black;
 }
