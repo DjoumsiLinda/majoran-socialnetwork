@@ -24,9 +24,6 @@ export default class Registration extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-
-        console.log("handleSubmit", this.state);
-
         fetch("/registration.json", {
             method: "POST",
             body: JSON.stringify({
@@ -39,8 +36,6 @@ export default class Registration extends Component {
                 "content-type": "application/json",
             },
         }).then((res) => {
-            console.log("res.ok", res.ok);
-
             if (res.ok) {
                 location.reload();
             } else {

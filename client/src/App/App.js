@@ -1,9 +1,10 @@
 import "../css/App.css";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Component } from "react";
 import ProfilePicture from "./ProfilePicture.js";
 import FindPeople from "./FindPeople.js";
 import Profile from "./Profile.js";
+import OtherProfile from "./OtherProfile.js";
 import Uploader from "./Uploader.js";
 
 export default class App extends Component {
@@ -22,7 +23,6 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        console.log("you first");
         fetch("/app.json")
             .then((res) => {
                 if (res.ok) {
@@ -68,8 +68,7 @@ export default class App extends Component {
                 </div>
                 <div id="all">
                     <header>
-                        {/*<Link to="/users">Find People</Link>*/}
-                        <a href="/users">Find People</a>
+                        <a href="/user">Find People</a>
                         <ProfilePicture
                             picture={this.state.url}
                             firstname={this.state.firstname}
@@ -91,8 +90,11 @@ export default class App extends Component {
                                     componentVisible={this.componentVisible}
                                 />
                             </Route>
-                            <Route path="/users">
+                            <Route exact path="/user">
                                 <FindPeople />
+                            </Route>
+                            <Route path="/user/:id">
+                                <OtherProfile />
                             </Route>
                         </BrowserRouter>
                     </div>

@@ -1,11 +1,14 @@
 import "../css/FindPeople.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function FindPeople() {
     const [people, setPeople] = useState("");
     const [peoples, setPeoples] = useState([]);
     const [loadMore, setLoadMore] = useState(false);
 
+    //When you call useEffect, you pass it a function.
+    //The function that you pass will be called immediately after your component has been rendered.
     useEffect(() => {
         if (!people) {
             setPeoples([]);
@@ -25,7 +28,6 @@ export default function FindPeople() {
                 // only save data in state if ignore is false
                 if (!ignore) {
                     setPeoples(data);
-                    checkLoadMore(data);
                 }
                 // if ignore is true we just ignore the response
             });
@@ -36,19 +38,23 @@ export default function FindPeople() {
             ignore = true;
         };
     }, [people]);
-    function checkLoadMore(data) {
-        if (!data[data.length - 1].id) {
-            return;
-        }
-        for (const i in data) {
-            if (data[i].id === data[i].lowestid) {
-                setLoadMore(false);
+
+    useEffect(
+        function checkLoadMore() {
+            if (peoples.length === 0 || !peoples[peoples.length - 1].id) {
                 return;
-            } else {
-                setLoadMore(true);
             }
-        }
-    }
+            for (const i in peoples) {
+                if (peoples[i].id === peoples[i].lowestid) {
+                    setLoadMore(false);
+                    return;
+                } else {
+                    setLoadMore(true);
+                }
+            }
+        },
+        [peoples]
+    );
 
     function handleClick() {
         const lastId = suchLastId(peoples);
@@ -59,8 +65,6 @@ export default function FindPeople() {
             })
             .then((nextPeoples) => {
                 setPeoples([...peoples, ...nextPeoples]);
-                checkLoadMore(peoples);
-                console.log(peoples);
             });
     }
 
@@ -89,6 +93,12 @@ export default function FindPeople() {
                                         <p>
                                             {users.first} {users.last}
                                         </p>
+                                        <Link
+                                            to={`/user/${users.id}`}
+                                            id="link"
+                                        >
+                                            See More
+                                        </Link>
                                     </div>
                                 </div>
                             );

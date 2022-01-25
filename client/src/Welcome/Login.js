@@ -22,7 +22,6 @@ export default class Login extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        console.log("You want to submit");
 
         fetch("/login.json", {
             method: "POST",
@@ -34,8 +33,6 @@ export default class Login extends Component {
                 "content-type": "application/json",
             },
         }).then((res) => {
-            console.log("res.ok", res.ok);
-
             if (res.ok) {
                 location.href = "/";
             } else {

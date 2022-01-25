@@ -9,7 +9,7 @@ export default class ResetPassword extends Component {
         this.state = {
             // 1 = start, 2 = verify, 3 = success
             error: false,
-            step: 3,
+            step: 1,
             email: "",
             code: "",
             password: "",
@@ -83,7 +83,7 @@ export default class ResetPassword extends Component {
                             },
                         }).then((res) => {
                             if (!res.ok) {
-                                console.log("Delete codeId not successfull");
+                                this.setState({ error: true });
                             }
                         });
                     }
@@ -161,6 +161,11 @@ export default class ResetPassword extends Component {
         } else if (this.state.step === 3) {
             return (
                 <div id="success">
+                    {this.state.error && (
+                        <p className="errorstep1">
+                            Oups,Sorry sommething is wrong. Please try again!
+                        </p>
+                    )}
                     <h2>Password successfull Reset!</h2>
                     <p>
                         You can now <Link to="/login">Log in</Link> with your

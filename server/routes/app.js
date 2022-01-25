@@ -70,7 +70,6 @@ router.post("/bioEditor.json", (req, res) => {
 });
 
 router.get("/findPeople.json/find", (req, res) => {
-    console.log(req.query.after);
     db.findPeople(req.query.after)
         .then((peoples) => {
             res.json(peoples.rows);
@@ -82,7 +81,6 @@ router.get("/findPeople.json/find", (req, res) => {
 });
 
 router.get("/findPeople.json/more", (req, res) => {
-    console.log(req.query.id, req.query.val);
     db.findMorePeople(req.query.id, req.query.val)
         .then((peoples) => {
             res.json(peoples.rows);
@@ -90,6 +88,21 @@ router.get("/findPeople.json/more", (req, res) => {
         .catch((e) => {
             console.log(e);
             res.sendStatus(500);
+        });
+});
+
+router.get("/userProfile/:id.json", (req, res) => {
+    if (req.params.id === `${req.session.userId}`) {
+        return res.json({ sameId: true });
+    }
+
+    db.getUsers(req.params.id)
+        .then((results) => {
+            res.json(results.rows[0]);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
         });
 });
 module.exports = router;

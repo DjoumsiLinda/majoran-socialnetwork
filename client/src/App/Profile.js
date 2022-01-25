@@ -4,7 +4,6 @@ import BioEditor from "./BioEditor.js";
 import ProfilePicture from "./ProfilePicture.js";
 
 export default function Profile(props) {
-    console.log("Pofile-->bio:", props);
     return (
         <section className="profile">
             {/* prop drilling: passing props from
