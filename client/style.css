@@ -53,3 +53,6 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+input:focus {
+    font-weight: 600;
+}

@@ -1,91 +1,62 @@
 import "../css/Registration.css";
-import { Component } from "react";
 import { Link } from "react-router-dom";
+import useForm from "../useForm.js"; //custom Hooks
+import useAuthSubmit from "../useAuthSubmit.js"; //custom Hooks
 
-export default class Registration extends Component {
-    constructor(props) {
-        super(props);
+export default function Registration() {
+    const [form, handleChange] = useForm({
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+    });
+    const [submit, error] = useAuthSubmit("/registration.json", {
+        first: form.firstname,
+        last: form.lastname,
+        email: form.email,
+        password: form.password,
+    });
 
-        this.state = {
-            firstname: "",
-            lastname: "",
-            email: "",
-            password: "",
-            error: false,
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(evt) {
-        this.setState({ [evt.target.name]: evt.target.value });
-    }
-
-    handleSubmit(evt) {
-        evt.preventDefault();
-        fetch("/registration.json", {
-            method: "POST",
-            body: JSON.stringify({
-                first: this.state.firstname,
-                last: this.state.lastname,
-                email: this.state.email,
-                password: this.state.password,
-            }),
-            headers: {
-                "content-type": "application/json",
-            },
-        }).then((res) => {
-            if (res.ok) {
-                location.reload();
-            } else {
-                this.setState({ error: true });
-            }
-        });
-    }
-
-    render() {
-        return (
-            <div id="regis">
-                <h2>Join LKD~Fashion</h2>
-                {this.state.error && (
-                    <p className="error">
-                        There are already an account with these emails adresse!
-                    </p>
-                )}
-                <form className="registration" onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        name="firstname"
-                        placeholder=" First Name"
-                        value={this.state.firstname}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="lastname"
-                        placeholder=" Last Name"
-                        value={this.state.lastname}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder=" E-Mail-Adresse"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder=" Password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                    <button type="submit">Register</button>
-                </form>
-                <Link to="/login">Click here to Log in!</Link>
-            </div>
-        );
-    }
+    return (
+        <div id="regis">
+            <h2>Join LKD~Fashion</h2>
+            {error && (
+                <p className="error">
+                    There are already an account with these emails adresse!
+                </p>
+            )}
+            <form className="registration" onSubmit={submit}>
+                <input
+                    type="text"
+                    name="firstname"
+                    placeholder="First Name"
+                    value={form.firstname}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="lastname"
+                    placeholder="Last Name"
+                    value={form.lastname}
+                    onChange={handleChange}
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="E-Mail-Adresse"
+                    value={form.email}
+                    onChange={handleChange}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={form.password}
+                    onChange={handleChange}
+                />
+                <button type="submit">Register</button>
+            </form>
+            <Link to="/login">Click here to Log in!</Link>
+        </div>
+    );
 }

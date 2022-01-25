@@ -58,7 +58,7 @@ export default class App extends Component {
 
     render() {
         if (!this.state.email) {
-            return <p>Waiting</p>;
+            return <p>Loading...</p>;
         }
         return (
             <div>

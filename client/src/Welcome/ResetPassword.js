@@ -111,7 +111,7 @@ export default class ResetPassword extends Component {
                         <input
                             type="email"
                             name="email"
-                            placeholder=" E-Mail"
+                            placeholder="E-Mail"
                             value={this.state.email}
                             onChange={this.handleChange}
                         />
@@ -142,7 +142,7 @@ export default class ResetPassword extends Component {
                         <input
                             type="text"
                             name="code"
-                            placeholder=" Code"
+                            placeholder="Code"
                             value={this.state.code}
                             onChange={this.handleChange}
                         />
@@ -150,7 +150,7 @@ export default class ResetPassword extends Component {
                         <input
                             type="password"
                             name=" password"
-                            placeholder=" Password"
+                            placeholder="Password"
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
