@@ -10,7 +10,7 @@ export default function Welcome() {
             <div className="left">
                 <h1>LKD~Fashion</h1>
                 <p>
-                    LKD~Fashion is a platform where you can share your
+                    LKD~Fashion is a plattform where you can share your
                     creations. Stay connected!
                 </p>
                 {/*<img src="/assets/logo.png" />*/}
