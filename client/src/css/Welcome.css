@@ -7,7 +7,7 @@
 
 .left {
     font-size: 25px;
-    width: 500px;
+    width: 450px;
 }
 .left h1 {
     margin-bottom: 40px;
@@ -33,3 +33,20 @@
     cursor: url("/assets/logo.png"), auto;
     filter: contrast(100%);
 }*/
+@media screen and (max-width: 1200px) {
+    .left,
+    .recht {
+        margin-left: -15%;
+        width: 310px;
+    }
+    #welcome {
+        justify-content: space-evenly;
+    }
+}
+@media screen and (max-width: 750px) {
+    #welcome {
+        margin-top: 5%;
+        margin-left: 50%;
+        flex-direction: column;
+    }
+}

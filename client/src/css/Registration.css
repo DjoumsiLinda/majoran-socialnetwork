@@ -36,8 +36,19 @@
     background-color: chocolate;
     margin-bottom: 20px;
 }
-.error {
-    margin-top: -10px;
-    margin-bottom: -5px;
+#regis .error {
+    margin-top: 10px;
+    margin-bottom: -15px;
     color: red;
+}
+@media screen and (max-width: 1200px) {
+    .registration input {
+        width: 200px;
+    }
+}
+@media screen and (max-width: 750px) {
+    .recht {
+        height: 450px;
+        margin-top: 10%;
+    }
 }

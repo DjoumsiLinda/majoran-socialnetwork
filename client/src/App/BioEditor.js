@@ -65,8 +65,10 @@ export default class BioEditor extends Component {
         } else if (this.props.bio) {
             return (
                 <div id="btxEditor">
-                    <p>{this.props.bio}</p>
-                    <button onClick={this.handleClickEdit}> Edit</button>
+                    <p>
+                        {this.props.bio}{" "}
+                        <button onClick={this.handleClickEdit}>Edit</button>
+                    </p>
                 </div>
             );
             // user is not in editing mode & has NO bio yet

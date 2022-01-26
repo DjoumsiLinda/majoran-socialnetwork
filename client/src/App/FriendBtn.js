@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function FriendBtn(props) {
     if (props.id) {
         const [buttonText, setbuttonText] = useState("");
-        console.log("ID:", props.id);
+        const [statusChange, setStatusChange] = useState(false);
 
         useEffect(() => {
             fetch(`/friendshipstatus/${props.id}.json`)
@@ -11,19 +11,24 @@ export default function FriendBtn(props) {
                     return res.json();
                 })
                 .then((status) => {
-                    console.log(status);
                     if (status === 0) {
                         setbuttonText("Send Friends Request");
-                    } else if (status === 1) {
-                        setbuttonText("todo");
-                        return;
+                    } else {
+                        if (status.accepted === false) {
+                            if (status.sender_id === props.id) {
+                                setbuttonText("Accept Friend Request");
+                            } else {
+                                setbuttonText("Cancel Friend Request");
+                            }
+                        } else if (status.accepted === true) {
+                            setbuttonText("Unfriend");
+                        }
                     }
                 });
-        }, []);
+        }, [statusChange]);
 
         function handleClick() {
             if (buttonText === "Send Friends Request") {
-                console.log("Iam Send Friends Request");
                 fetch(`/send-friend-request/${props.id}.json`, {
                     method: "POST",
                     headers: {
@@ -31,7 +36,29 @@ export default function FriendBtn(props) {
                     },
                 }).then((res) => {
                     if (res.ok) {
-                        console.log("Insert ist succefull");
+                        setStatusChange(!statusChange);
+                    }
+                });
+            } else if (buttonText === "Accept Friend Request") {
+                fetch(`/accept-friend-request/${props.id}.json`, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                }).then((res) => {
+                    if (res.ok) {
+                        setStatusChange(!statusChange);
+                    }
+                });
+            } else {
+                fetch(`/end-friendship/${props.id}.json`, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                }).then((res) => {
+                    if (res.ok) {
+                        setStatusChange(!statusChange);
                     }
                 });
             }

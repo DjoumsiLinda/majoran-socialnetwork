@@ -124,13 +124,13 @@ export default class ResetPassword extends Component {
                 <div id="reset">
                     <h2>Reset Password</h2>
                     {this.state.error && (
-                        <p className="error">
-                            Oups,Sorry sommething is wrong. Please try again!
+                        <p className="errorstep2">
+                            Oups, Sorry sommething is wrong. Please try again!
                         </p>
                     )}
                     {this.state.expiration && (
-                        <p className="error">
-                            Oups,code has expired!{" "}
+                        <p className="errorstep2">
+                            Oups, code has expired!{" "}
                             <Link to="/password"> Reset Password</Link>
                         </p>
                     )}

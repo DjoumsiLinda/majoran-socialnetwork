@@ -78,6 +78,7 @@ export default function FindPeople() {
                     value={people}
                     onChange={(e) => setPeople(e.target.value)}
                 />
+                {people && peoples.length === 0 && <p>not found</p>}
                 {peoples && (
                     <ul>
                         {peoples.first} {peoples.last}

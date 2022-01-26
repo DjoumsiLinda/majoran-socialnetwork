@@ -39,4 +39,18 @@ p:nth-child(1) {
     width: 250px;
     height: 40px;
     background-color: gold;
+    border: 2px solid black;
+}
+#error {
+    font-size: 30px;
+    margin-top: 50px;
+    text-align: center;
+}
+@media screen and (max-width: 1000px) {
+    .otherProfile {
+        background-color: red;
+    }
+    #user {
+        width: 80%;
+    }
 }

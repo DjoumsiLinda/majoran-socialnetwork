@@ -21,10 +21,12 @@
 #btxEditor {
     margin-top: 5%;
     display: flex;
+    font-weight: normal;
     flex-direction: row;
 }
 #btxEditor p {
-    font-size: 20px;
+    font-weight: normal;
+    font-size: 18px;
 }
 #btxEditor button {
     text-decoration: underline;

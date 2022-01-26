@@ -29,7 +29,7 @@ export default function OtherProfile() {
     return (
         <div className="otherProfile">
             {error ? (
-                <p>Error</p>
+                <p id="error">Error</p>
             ) : (
                 <div id="user">
                     <div id="friendBtn">

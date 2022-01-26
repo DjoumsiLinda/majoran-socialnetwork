@@ -110,8 +110,24 @@ router.get("/friendshipstatus/:id.json", (req, res) => {
     if (req.params.id === `${req.session.userId}`) {
         return res.sendStatus(500);
     }
-
     db.getFriendships(req.params.id, req.session.userId)
+        .then((results) => {
+            console.log("Get Frindships", results.rowCount);
+            if (results.rowCount === 0) {
+                return res.json(results.rowCount);
+            } else {
+                console.log(results.rows[0]);
+                return res.json(results.rows[0]);
+            }
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
+        });
+});
+
+router.post("/send-friend-request/:id.json", (req, res) => {
+    db.addFriendships(req.session.userId, req.params.id)
         .then((results) => {
             console.log(results.rowCount);
             res.json(results.rowCount);
@@ -122,11 +138,21 @@ router.get("/friendshipstatus/:id.json", (req, res) => {
         });
 });
 
-router.post("/send-friend-request/:id.json", (req, res) => {
-    console.log("send-friend-request:", req.params.id);
-    db.addFriendships(req.session.userId, req.params.id)
+router.post("/accept-friend-request/:id.json", (req, res) => {
+    db.updateFriendships(req.session.userId, req.params.id)
         .then((results) => {
             console.log(results.rowCount);
+            res.json(results.rowCount);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
+        });
+});
+
+router.post("/end-friendship/:id.json", (req, res) => {
+    db.deleteFriendships(req.session.userId, req.params.id)
+        .then((results) => {
             res.json(results.rowCount);
         })
         .catch((e) => {

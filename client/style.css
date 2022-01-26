@@ -56,3 +56,40 @@ footer {
 input:focus {
     font-weight: 600;
 }
+
+@media screen and (max-width: 1200px) {
+    body {
+        background-color: yellow;
+    }
+}
+@media screen and (max-width: 750px) {
+    body {
+        background-color: rosybrown;
+        overflow-y: scroll;
+        min-height: 120vh;
+        display: flex;
+        flex-direction: column;
+    }
+    footer {
+        margin-top: 100px;
+        height: 250px;
+    }
+    #footerText {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #footer_left,
+    #footer_right,
+    #footer_center {
+        margin-left: 10px;
+        margin-bottom: 20px;
+        display: block;
+    }
+    #footer_center {
+        margin-top: 5px;
+    }
+    #footer_right {
+        display: flex;
+        flex-direction: column;
+    }
+}

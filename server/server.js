@@ -13,7 +13,7 @@ const app = require("./routes/app.js");
 // sessionSecret für heroku
 let sessionSecret = process.env.SESSION_SECRET;
 if (!sessionSecret) {
-    sessionSecret = require("./secrets.json").sessionSecret;
+    sessionSecret = require("./secrets.json").SESSION_SECRET;
 }
 server.use(
     cookieSession({

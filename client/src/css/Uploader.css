@@ -43,3 +43,16 @@
     font-size: 25px;
     background-color: hotpink;
 }
+@media screen and (max-width: 1000px) {
+    .uploader {
+        margin-top: -30%;
+        width: 70%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .uploader {
+        margin-top: -45%;
+        background-color: darkorange;
+        width: 70%;
+    }
+}

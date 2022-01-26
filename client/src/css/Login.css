@@ -35,8 +35,13 @@
 #lo a {
     margin-bottom: 15px;
 }
-.error {
-    margin-top: -10px;
-    margin-bottom: -5px;
+#lo .error {
+    margin-top: 10px;
+    margin-bottom: -15px;
     color: red;
+}
+@media screen and (max-width: 1200px) {
+    .login input {
+        width: 200px;
+    }
 }
