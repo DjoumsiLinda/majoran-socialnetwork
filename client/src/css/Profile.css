@@ -34,7 +34,7 @@
 
 @media screen and (max-width: 800px) {
     .profile {
-        margin-top: 100px;
+        margin-top: 150px;
         overflow-y: scroll;
         flex-wrap: wrap;
     }
