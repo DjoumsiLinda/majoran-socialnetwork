@@ -26,3 +26,17 @@ p:nth-child(1) {
     font-weight: bold;
     margin-bottom: 10px;
 }
+#friendBtn {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+#friendBtn button {
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 20px;
+    width: 250px;
+    height: 40px;
+    background-color: gold;
+}

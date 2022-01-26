@@ -13,7 +13,7 @@ if (!connetionString) {
 }
 
 const db = spicedPg(connetionString);
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Users table
 module.exports.addUser = (first, last, email, password) => {
     return db.query(
         `INSERT INTO users (first, last, email, password)
@@ -32,7 +32,7 @@ module.exports.addImageInUsersTable = (url, id) => {
 };
 module.exports.getUsers = (id) => {
     return db.query(
-        `SELECT first, last, email, url, bio FROM users where id = $1;`,
+        `SELECT id, first, last, email, url, bio FROM users where id = $1;`,
         [id]
     );
 };
@@ -70,6 +70,16 @@ module.exports.checkEmail = (email) => {
     return db.query(`SELECT id FROM users where email = $1;`, [email]);
 };
 
+module.exports.addBio = (bio, id) => {
+    return db.query(
+        `UPDATE users
+        SET bio = $1
+        WHERE id = $2;`,
+        [bio, id]
+    );
+};
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ reset_codes table
 module.exports.addCode = (email, code, users_id) => {
     return db.query(
         `INSERT INTO reset_codes (email, code, users_id)
@@ -89,11 +99,21 @@ module.exports.deleteCode = (id) => {
     return db.query(`delete from reset_codes where id=$1`, [id]);
 };
 
-module.exports.addBio = (bio, id) => {
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ friendships table
+module.exports.getFriendships = (receiver_id, sender_id) => {
     return db.query(
-        `UPDATE users
-        SET bio = $1
-        WHERE id = $2;`,
-        [bio, id]
+        `SELECT * FROM friendships
+        WHERE (receiver_id = $1 AND sender_id = $2)
+        OR (receiver_id = $2 AND sender_id = $1);`,
+        [receiver_id, sender_id]
+    );
+};
+
+module.exports.addFriendships = (receiver_id, sender_id) => {
+    return db.query(
+        `INSERT INTO friendships (sender_id, receiver_id)
+        VALUES($1, $2)
+        RETURNING id;`,
+        [receiver_id, sender_id]
     );
 };

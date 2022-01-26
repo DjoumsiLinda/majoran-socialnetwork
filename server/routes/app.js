@@ -105,4 +105,33 @@ router.get("/userProfile/:id.json", (req, res) => {
             res.sendStatus(404);
         });
 });
+
+router.get("/friendshipstatus/:id.json", (req, res) => {
+    if (req.params.id === `${req.session.userId}`) {
+        return res.sendStatus(500);
+    }
+
+    db.getFriendships(req.params.id, req.session.userId)
+        .then((results) => {
+            console.log(results.rowCount);
+            res.json(results.rowCount);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
+        });
+});
+
+router.post("/send-friend-request/:id.json", (req, res) => {
+    console.log("send-friend-request:", req.params.id);
+    db.addFriendships(req.session.userId, req.params.id)
+        .then((results) => {
+            console.log(results.rowCount);
+            res.json(results.rowCount);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
+        });
+});
 module.exports = router;

@@ -1,6 +1,7 @@
 import "../css/OtherProfile.css";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import FriendBtn from "./FriendBtn.js";
 
 export default function OtherProfile() {
     const [user, setUser] = useState("");
@@ -31,7 +32,10 @@ export default function OtherProfile() {
                 <p>Error</p>
             ) : (
                 <div id="user">
-                    <img src={user.url || "/assets/default.jpeg"} />
+                    <div id="friendBtn">
+                        <img src={user.url || "/assets/default.jpeg"} />
+                        <FriendBtn id={user.id} />
+                    </div>
                     <div id="cen">
                         <p>
                             {user.first} {user.last}

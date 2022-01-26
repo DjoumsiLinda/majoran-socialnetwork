@@ -1,7 +1,7 @@
 -- sudo service postgresql start
 -- createdb socialnetwork
 -- psql -d socialnetwork -f server/tables/reset_codes.sql
--- heroku pg:psql -f tables/reset_codes.sql
+-- heroku pg:psql -f server/tables/reset_codes.sql
 DROP TABLE IF EXISTS reset_codes;
 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ reset_codes tables
