@@ -1,7 +1,7 @@
 .uploader {
     background-color: greenyellow;
     margin-left: 20%;
-    margin-top: -25%;
+    margin-top: -40%;
     width: 800px;
     height: 300px;
     font-size: 25px;
@@ -45,13 +45,13 @@
 }
 @media screen and (max-width: 1000px) {
     .uploader {
-        margin-top: -30%;
+        margin-top: -40%;
         width: 70%;
     }
 }
 @media screen and (max-width: 800px) {
     .uploader {
-        margin-top: -45%;
+        margin-top: -55%;
         background-color: darkorange;
         width: 70%;
     }
