@@ -8,6 +8,9 @@ export default function ProfilePicture(props) {
                 src={props.picture || "/assets/default.jpeg"}
                 alt={`${props.firstname} ${props.lastname}`}
                 onClick={() => props.componentVisible(props.picture)}
+                onError={(evt) => {
+                    evt.target.src = "/assets/default.jpeg";
+                }}
             />
         </div>
     );

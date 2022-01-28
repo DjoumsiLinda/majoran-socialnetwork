@@ -1,0 +1,23 @@
+.OtherFriends {
+    margin-top: 10px;
+    overflow: hidden;
+}
+#not {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.OtherFriends #people img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+}
+.OtherFriends #cen {
+    margin-left: -2px;
+}
+#back {
+    margin-left: 45%;
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: tomato;
+}

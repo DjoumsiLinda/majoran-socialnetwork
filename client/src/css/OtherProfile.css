@@ -3,6 +3,17 @@
     height: 65vh;
     background-color: rgb(238, 47, 255);
     margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#left {
+    width: 75%;
+    margin-right: 20px;
+}
+#right {
+    background-color: skyblue;
+    overflow-y: scroll;
 }
 #user {
     width: 100%;

@@ -2,6 +2,7 @@ import "../css/App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Component } from "react";
 import ProfilePicture from "./ProfilePicture.js";
+import Friends from "./Friends";
 import FindPeople from "./FindPeople.js";
 import Profile from "./Profile.js";
 import OtherProfile from "./OtherProfile.js";
@@ -18,6 +19,7 @@ export default class App extends Component {
             uploaderVisible: false,
             bio: "",
         };
+
         this.componentVisible = this.componentVisible.bind(this);
         this.setbio = this.setbio.bind(this);
     }
@@ -69,6 +71,7 @@ export default class App extends Component {
                 <div id="all">
                     <header>
                         <a href="/user">Find People</a>
+                        <a href="/friends">Friends</a>
                         <ProfilePicture
                             picture={this.state.url}
                             firstname={this.state.firstname}
@@ -95,6 +98,9 @@ export default class App extends Component {
                             </Route>
                             <Route path="/user/:id">
                                 <OtherProfile />
+                            </Route>
+                            <Route path="/friends">
+                                <Friends />
                             </Route>
                         </BrowserRouter>
                     </div>

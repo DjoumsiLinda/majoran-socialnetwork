@@ -89,6 +89,10 @@ export default function FindPeople() {
                                         src={
                                             users.url || "/assets/default.jpeg"
                                         }
+                                        onError={(evt) => {
+                                            evt.target.src =
+                                                "/assets/default.jpeg";
+                                        }}
                                     />
                                     <div id="cen">
                                         <p>

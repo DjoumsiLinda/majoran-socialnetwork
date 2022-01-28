@@ -61,7 +61,7 @@ router.post("/bioEditor.json", (req, res) => {
     const { bio } = req.body;
     db.addBio(bio, req.session.userId)
         .then((update) => {
-            res.json(update.rowCountt);
+            res.json(update.rowCount);
         })
         .catch((err) => {
             console.log(err);
@@ -116,7 +116,6 @@ router.get("/friendshipstatus/:id.json", (req, res) => {
             if (results.rowCount === 0) {
                 return res.json(results.rowCount);
             } else {
-                console.log(results.rows[0]);
                 return res.json(results.rows[0]);
             }
         })
@@ -129,7 +128,6 @@ router.get("/friendshipstatus/:id.json", (req, res) => {
 router.post("/send-friend-request/:id.json", (req, res) => {
     db.addFriendships(req.session.userId, req.params.id)
         .then((results) => {
-            console.log(results.rowCount);
             res.json(results.rowCount);
         })
         .catch((e) => {
@@ -141,7 +139,6 @@ router.post("/send-friend-request/:id.json", (req, res) => {
 router.post("/accept-friend-request/:id.json", (req, res) => {
     db.updateFriendships(req.session.userId, req.params.id)
         .then((results) => {
-            console.log(results.rowCount);
             res.json(results.rowCount);
         })
         .catch((e) => {
@@ -160,4 +157,27 @@ router.post("/end-friendship/:id.json", (req, res) => {
             res.sendStatus(404);
         });
 });
+
+router.get("/friends-wannabes.json", (req, res) => {
+    db.getFriends(req.session.userId)
+        .then((results) => {
+            res.json(results.rows);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
+        });
+});
+
+router.get("/otherFriendsProfile/:id.json", (req, res) => {
+    db.getOtherFriendsProfile(req.params.id, req.session.userId)
+        .then((results) => {
+            res.json(results.rows);
+        })
+        .catch((e) => {
+            console.log(e);
+            res.sendStatus(404);
+        });
+});
+
 module.exports = router;

@@ -134,3 +134,24 @@ module.exports.deleteFriendships = (receiver_id, sender_id) => {
         [receiver_id, sender_id]
     );
 };
+
+module.exports.getFriends = (id) => {
+    return db.query(
+        `SELECT * FROM friendships
+		JOIN users
+        ON (sender_id=users.id AND receiver_id=$1      AND accepted=false) -- WANNABES
+        OR (sender_id=users.id AND receiver_id=$1      AND accepted=true)  -- Friend requests, that I accepted
+        OR (sender_id=$1      AND receiver_id=users.id AND accepted=true);`,
+        [id]
+    );
+};
+
+module.exports.getOtherFriendsProfile = (id, aktId) => {
+    return db.query(
+        `SELECT * FROM friendships
+		JOIN users
+        ON (sender_id=users.id AND receiver_id=$1      AND accepted=true AND  sender_id != $2)
+        OR (sender_id=$1      AND receiver_id=users.id AND accepted=true AND receiver_id != $2);`,
+        [id, aktId]
+    );
+};
