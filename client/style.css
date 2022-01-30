@@ -63,7 +63,7 @@ footer {
     body {
         background-color: rosybrown;
         overflow-y: scroll;
-        min-height: 100vh;
+        min-height: 80vh;
         display: flex;
         flex-direction: column;
     }
