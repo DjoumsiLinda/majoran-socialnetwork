@@ -21,7 +21,9 @@ export default function Profile(props) {
                 <h2>
                     {props.first} {props.last}
                 </h2>
-                <BioEditor bio={props.bio} setbio={props.setbio} />
+                <div>
+                    <BioEditor bio={props.bio} setbio={props.setbio} />{" "}
+                </div>
             </div>
         </section>
     );
