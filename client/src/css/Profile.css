@@ -34,7 +34,6 @@
 }
 @media screen and (max-width: 1430px) {
     .profile {
-        background-color: tomato;
         width: 45%;
     }
     .profile #right {

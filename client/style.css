@@ -63,13 +63,12 @@ footer {
     body {
         background-color: rosybrown;
         overflow-y: scroll;
-        min-height: 80vh;
         display: flex;
         flex-direction: column;
     }
     footer {
-        margin-top: 100px;
-        height: 250px;
+        margin-top: 50px;
+        height: 260px;
     }
     #footerText {
         display: flex;

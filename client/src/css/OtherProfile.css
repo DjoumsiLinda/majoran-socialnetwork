@@ -65,3 +65,12 @@ p:nth-child(1) {
         width: 80%;
     }
 }
+@media screen and (max-width: 750px) {
+    .otherProfile {
+        display: flex;
+        flex-direction: column;
+    }
+    .otherProfile #right {
+        margin-top: 10px;
+    }
+}
