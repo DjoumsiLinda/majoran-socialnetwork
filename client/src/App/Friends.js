@@ -71,7 +71,13 @@ export default function Friends() {
         });
     }
     if (!currentlyFriends || !sendFriendsRequest) {
-        return null;
+        return (
+            <div className="friends">
+                <div id="not">
+                    <div>Sorry Please try again ;(</div>
+                </div>
+            </div>
+        );
     }
 
     return (

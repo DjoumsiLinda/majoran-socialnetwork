@@ -1,19 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { receivedFriends } from "../redux/other-friends/slice.js";
 import "../css/OtherFriends.css";
 import { Link } from "react-router-dom";
 
 export default function OtherFriends(props) {
-    const [friends, setFriends] = useState([]);
+    const dispatch = useDispatch();
+    const friends = useSelector((state) => {
+        state.otherFriends &&
+            state.otherFriends.filter((friend) => friend.id !== 0);
+    });
     useEffect(() => {
         fetch(`/otherFriendsProfile/${props.id}.json`)
             .then((res) => {
                 return res.json();
             })
             .then((usersData) => {
-                setFriends(usersData);
+                dispatch(receivedFriends(usersData));
             });
     }, []);
-
+    if (!friends || friends.length === 0) {
+        return (
+            <div className="OtherFriends">
+                <p id="not">Not Friends</p>
+            </div>
+        );
+    }
     return (
         <div className="OtherFriends">
             <div id="back">

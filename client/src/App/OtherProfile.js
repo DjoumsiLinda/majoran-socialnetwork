@@ -1,11 +1,18 @@
 import "../css/OtherProfile.css";
+import { useDispatch, useSelector } from "react-redux";
+import { receivedUser } from "../redux/other-users/slice.js";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import FriendBtn from "./FriendBtn.js";
 import OtherFriends from "./OtherFriends.js";
 
 export default function OtherProfile() {
-    const [user, setUser] = useState("");
+    const dispatch = useDispatch();
+    const user = useSelector((state) => {
+        if (state.otherUsers !== null && state.otherUsers.id !== 0) {
+            return state.otherUsers;
+        }
+    });
     const [error, setError] = useState(false);
     const { id } = useParams(); // url params
     const history = useHistory();
@@ -19,14 +26,20 @@ export default function OtherProfile() {
                 if ("sameId" in user) {
                     return history.replace("/");
                 } else {
-                    setUser(user);
+                    dispatch(receivedUser(user));
                 }
             })
             .catch(() => {
                 setError(true);
             });
     }, [id]);
-
+    if (!user) {
+        return (
+            <div className="otherProfile">
+                <p id="error">Error</p>
+            </div>
+        );
+    }
     return (
         <div className="otherProfile">
             <div id="left">

@@ -7,17 +7,31 @@ import FindPeople from "./FindPeople.js";
 import Profile from "./Profile.js";
 import OtherProfile from "./OtherProfile.js";
 import Uploader from "./Uploader.js";
+import { connect } from "react-redux";
+import { receivedUsers } from "../redux/users/slice";
+import { setbioHook } from "../redux/bio/slice";
+import { seturlHook } from "../redux/url/slice";
 
-export default class App extends Component {
+let user = null;
+const mapStateToProps = (state) => {
+    if (state.users && state.users.id !== 0) {
+        user = state.users;
+    }
+    if (state.bio && state.bio !== "") {
+        user = { ...user, bio: state.bio };
+    }
+    if (state.url && state.url !== "") {
+        user = { ...user, url: state.url };
+    }
+    return { user };
+};
+
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstname: "",
-            lastname: "",
-            email: "",
-            url: "",
             uploaderVisible: false,
-            bio: "",
+            error: false,
         };
 
         this.componentVisible = this.componentVisible.bind(this);
@@ -33,33 +47,23 @@ export default class App extends Component {
                     this.setState({ error: true });
                 }
             })
-            .then((users) => {
-                this.setState({
-                    firstname: users.first,
-                    lastname: users.last,
-                    email: users.email,
-                    url: users.url,
-                    bio: users.bio,
-                });
+            .then((user) => {
+                this.props.receivedUsers(user);
             });
     }
 
     componentVisible(url) {
         this.setState({ uploaderVisible: !this.state.uploaderVisible });
         if (url) {
-            this.setState({ url: url });
-        } else {
-            this.setState({ url: this.state.url });
+            this.props.seturlHook(url);
         }
     }
     setbio(bio) {
-        this.setState({
-            bio: bio,
-        });
+        this.props.setbioHook(bio);
     }
 
     render() {
-        if (!this.state.email) {
+        if (!user) {
             return <p>Loading...</p>;
         }
         return (
@@ -73,10 +77,10 @@ export default class App extends Component {
                         <a href="/user">Find People</a>
                         <a href="/friends">Friends</a>
                         <ProfilePicture
-                            picture={this.state.url}
-                            firstname={this.state.firstname}
-                            lastname={this.state.lastname}
-                            email={this.state.email}
+                            picture={user.url}
+                            first={user.first}
+                            last={user.last}
+                            email={user.email}
                             componentVisible={this.componentVisible}
                         />
                     </header>
@@ -84,11 +88,11 @@ export default class App extends Component {
                         <BrowserRouter>
                             <Route exact path="/">
                                 <Profile
-                                    picture={this.state.url}
-                                    firstname={this.state.firstname}
-                                    lastname={this.state.lastname}
-                                    email={this.state.email}
-                                    bio={this.state.bio}
+                                    picture={user.url}
+                                    first={user.first}
+                                    last={user.last}
+                                    email={user.email}
+                                    bio={user.bio}
                                     setbio={this.setbio}
                                     componentVisible={this.componentVisible}
                                 />
@@ -113,3 +117,8 @@ export default class App extends Component {
         );
     }
 }
+export default connect(mapStateToProps, {
+    receivedUsers,
+    setbioHook,
+    seturlHook,
+})(App);

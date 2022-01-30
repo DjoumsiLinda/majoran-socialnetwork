@@ -11,15 +11,15 @@ export default function Profile(props) {
             <div id="left">
                 <ProfilePicture
                     picture={props.picture}
-                    firstname={props.firstname}
-                    lastname={props.lastname}
+                    first={props.first}
+                    last={props.last}
                     email={props.email}
                     componentVisible={props.componentVisible}
                 />
             </div>
             <div id="right">
                 <h2>
-                    {props.firstname} {props.lastname}
+                    {props.first} {props.last}
                 </h2>
                 <BioEditor bio={props.bio} setbio={props.setbio} />
             </div>
