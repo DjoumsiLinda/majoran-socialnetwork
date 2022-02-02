@@ -2,7 +2,10 @@ import "../css/App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Component } from "react";
 import ProfilePicture from "./ProfilePicture.js";
+import Chat from "./Chat";
 import Friends from "./Friends";
+import Logout from "./Logout";
+import Delete from "./Delete";
 import FindPeople from "./FindPeople.js";
 import Profile from "./Profile.js";
 import OtherProfile from "./OtherProfile.js";
@@ -67,51 +70,81 @@ class App extends Component {
             return <p>Loading...</p>;
         }
         return (
-            <div>
-                <div id="app">
-                    <h1>LKD~Fashion</h1>
-                    <img src="/assets/logo.png" />
+            <div id="appMenu">
+                <div id="menu">
+                    <a href="/profile">
+                        <img src="/assets/profile.png"></img>
+                    </a>
+                    <a href="/">About us</a>
+                    <a href="/user">Find People</a>
+                    <a href="/chat">Chat</a>
+                    <a href="/friends">Friends</a>
+                    <a href="/delete">Delete your account</a>
+                    <a href="/logout">Logout</a>
                 </div>
-                <div id="all">
-                    <header>
-                        <a href="/user">Find People</a>
-                        <a href="/friends">Friends</a>
-                        <ProfilePicture
-                            picture={user.url}
-                            first={user.first}
-                            last={user.last}
-                            email={user.email}
-                            componentVisible={this.componentVisible}
-                        />
-                    </header>
-                    <div id="tocenter">
-                        <BrowserRouter>
-                            <Route exact path="/">
-                                <Profile
+                <div id="inhalt">
+                    <div id="app">
+                        <div>
+                            <h1>LKD~Fashion</h1>
+                        </div>
+                        <img src="/assets/logo.png" />
+                    </div>
+                    <div id="all">
+                        <header>
+                            <div id="alist">
+                                <a href="/user">Find People</a>
+                                <a href="/chat">Chat</a>
+                                <a href="/friends">Friends</a>
+                                <ProfilePicture
                                     picture={user.url}
                                     first={user.first}
                                     last={user.last}
                                     email={user.email}
-                                    bio={user.bio}
-                                    setbio={this.setbio}
                                     componentVisible={this.componentVisible}
                                 />
-                            </Route>
-                            <Route exact path="/user">
-                                <FindPeople />
-                            </Route>
-                            <Route path="/user/:id">
-                                <OtherProfile />
-                            </Route>
-                            <Route path="/friends">
-                                <Friends />
-                            </Route>
-                        </BrowserRouter>
-                    </div>
+                            </div>
+                        </header>
+                        <div id="tocenter">
+                            <BrowserRouter>
+                                <Route exact path="/"></Route>
+                                <Route exact path="/profile">
+                                    <Profile
+                                        picture={user.url}
+                                        first={user.first}
+                                        last={user.last}
+                                        email={user.email}
+                                        bio={user.bio}
+                                        setbio={this.setbio}
+                                        componentVisible={this.componentVisible}
+                                    />
+                                </Route>
+                                <Route exact path="/user">
+                                    <FindPeople />
+                                </Route>
+                                <Route path="/user/:id">
+                                    <OtherProfile />
+                                </Route>
+                                <Route path="/friends">
+                                    <Friends />
+                                </Route>
+                                <Route path="/chat">
+                                    <Chat />
+                                </Route>
+                                <Route path="/logout">
+                                    <Logout />
+                                </Route>
+                                <Route path="/delete">
+                                    <Delete />
+                                </Route>
+                            </BrowserRouter>
+                        </div>
 
-                    {this.state.uploaderVisible && (
-                        <Uploader componentVisible={this.componentVisible} />
-                    )}
+                        {this.state.uploaderVisible && (
+                            <Uploader
+                                componentVisible={this.componentVisible}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
         );

@@ -5,6 +5,7 @@ import urlReducer from "./url/slice";
 import usersReducer from "./users/slice";
 import otherUsersReducer from "./other-users/slice";
 import otherFriendsReducer from "./other-friends/slice";
+import messagesReducer from "./messages/slice";
 
 const rootReducer = combineReducers({
     friends: friendsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     url: urlReducer,
     otherUsers: otherUsersReducer,
     otherFriends: otherFriendsReducer,
+    messages: messagesReducer,
 });
 
 export default rootReducer;

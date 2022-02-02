@@ -1,7 +1,7 @@
 .profile {
     background-color: rgb(9, 230, 232);
-    width: 55%;
-    height: 50vh;
+    width: 75%;
+    height: 65vh;
     display: flex;
     flex-direction: row;
     margin-top: 50px;
@@ -9,7 +9,7 @@
 .profile #right {
     background-color: rgb(9, 230, 232);
     overflow: hidden;
-    margin-left: -38%;
+    margin-left: -40%;
     width: 400px;
     margin-top: 3%;
 }

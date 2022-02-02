@@ -155,3 +155,35 @@ module.exports.getOtherFriendsProfile = (id, aktId) => {
         [id, aktId]
     );
 };
+module.exports.getLastChatMessages = () => {
+    return db.query(
+        `SELECT messages.id, messages.message, messages.created_at, messages.users_id, users.first,  users.last, users.url FROM messages
+		JOIN users
+        ON users.id=messages.users_id ORDER BY messages.created_at DESC LIMIT 10;`
+    );
+};
+module.exports.addMessages = (message, users_id) => {
+    return db.query(
+        `INSERT INTO messages (message, users_id)
+        VALUES($1, $2)
+        RETURNING id, created_at;`,
+        [message, users_id]
+    );
+};
+module.exports.getConnectedUsers = (id) => {
+    return db.query(`SELECT id, first, last, url FROM users where id =$1;`, [
+        id,
+    ]);
+};
+module.exports.deleteMessages = (user_id) => {
+    return db.query(`delete from messages where users_id=$1`, [user_id]);
+};
+module.exports.deleteFriendships = (user_id) => {
+    return db.query(
+        `delete from friendships where sender_id=$1 or receiver_id=$1`,
+        [user_id]
+    );
+};
+module.exports.deleteUsers = (user_id) => {
+    return db.query(`delete from users where id=$1`, [user_id]);
+};

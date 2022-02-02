@@ -15,15 +15,15 @@ router.post("/login.json", (request, response) => {
                 response.sendStatus(500);
             } else {
                 hashFromDb = results.rows[0].password;
+                bcrypt.compare(password, hashFromDb).then((match) => {
+                    if (match) {
+                        request.session.userId = results.rows[0].id;
+                        response.json(results.rows[0].id);
+                    } else {
+                        response.sendStatus(500);
+                    }
+                });
             }
-            bcrypt.compare(password, hashFromDb).then((match) => {
-                if (match) {
-                    request.session.userId = results.rows[0].id;
-                    response.json(results.rows[0].id);
-                } else {
-                    response.sendStatus(500);
-                }
-            });
         })
         .catch((err) => {
             console.log(err);

@@ -37,6 +37,7 @@ export default class Login extends Component {
                 location.href = "/";
             } else {
                 this.setState({ error: true });
+                this.setState({ email: "", password: "" });
             }
         });
     }

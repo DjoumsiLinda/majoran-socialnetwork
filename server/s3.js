@@ -40,7 +40,7 @@ module.exports.s3Uploader = (req, res, next) => {
 };
 
 module.exports.s3deleteUrl = (req, res, next) => {
-    db.getImageWithId(req.params.id)
+    db.getUsers(req.session.userId)
         .then((results) => {
             var params = { Bucket: "spicedling", Key: results.rows[0].url };
             s3.deleteObject(params, function (err) {

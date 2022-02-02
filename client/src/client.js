@@ -6,6 +6,7 @@ import reducer from "./redux/reducer";
 import * as immutableState from "redux-immutable-state-invariant";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+import { init } from "./App/socket.js";
 import Welcome from "./Welcome/Welcome.js";
 import App from "./App/App.js";
 
@@ -21,6 +22,7 @@ fetch("/user/id.json")
     .then((data) => {
         // user is logged in
         if (data.userId) {
+            init(store);
             ReactDOM.render(
                 <Provider store={store}>
                     <App />

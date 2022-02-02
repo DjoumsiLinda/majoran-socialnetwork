@@ -1,3 +1,28 @@
+#appMenu {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+#menu {
+    margin-top: 90px;
+    height: 110%;
+    background-color: rgba(255, 166, 200, 0.589);
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+}
+#menu a {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+#menu a:nth-child(1) {
+    margin-left: 33%;
+    margin-bottom: 40px;
+}
+#menu img {
+    width: 80px;
+    height: 80px;
+}
+
 #app {
     position: fixed;
     left: 0;
@@ -6,16 +31,26 @@
     bottom: 0;
     font-size: 35px;
     z-index: -1;
-    filter: brightness(60%);
-    background-color: rgba(0, 0, 0, 0.6);
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-items: center;
 }
-#app h1 {
-    margin-top: 10px;
-    margin-bottom: -5px;
+#app img {
+    filter: brightness(100%);
+    object-fit: fill;
+    background-color: rgb(100, 100, 100);
+    animation-name: wave;
+    animation-duration: 3s;
+    animation-iteration-count: 10;
+    animation-direction: reverse;
+}
+#app div {
+    padding: 5px;
+    filter: brightness(100%);
+    background-color: rgba(255, 187, 0, 0.7);
+}
+#app div h1 {
+    margin-left: 10px;
 }
 #all {
     width: 100%;
@@ -27,19 +62,46 @@
     justify-content: center;
     align-content: center;
 }
+
 header {
     /*background-color: rgba(255, 187, 0, 0.5);*/
-    background-color: rgba(255, 187, 0, 0.8);
-    height: 89px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+header #alist {
+    /*background-color: rgba(255, 187, 0, 0.8);*/
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    filter: brightness(100%);
+    width: 100%;
+    font-size: 20px;
 }
-header a {
+header #alist a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 20px;
-    font-size: 20px;
+    align-items: center;
+    width: 120px;
+}
+
+@media screen and (max-width: 900px) {
+    #app div {
+        filter: opacity(10%);
+        background-color: transparent;
+    }
+}
+@keyframes wave {
+    0% {
+        background-color: yellow;
+        width: 20%;
+        height: 20%;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+    }
 }

@@ -1,0 +1,125 @@
+#contai {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(9, 230, 232);
+    margin-top: 20px;
+    width: 70%;
+    height: 65vh;
+}
+.chat {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+.chat #nam {
+    margin-top: -20px;
+    margin-bottom: 15px;
+    margin-left: 25%;
+}
+#lastMessages {
+    min-height: 200px;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+    border: 2px solid violet;
+    display: flex;
+    /* to make latest messages always visible */
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
+}
+#formId {
+    display: flex;
+    flex-direction: row;
+}
+#writeMessage textarea {
+    width: 100%;
+    height: 50px;
+    margin-right: 10px;
+}
+#writeMessage button {
+    font-size: 20px;
+    margin-top: 10px;
+    height: 30px;
+    cursor: pointer;
+    background-color: chartreuse;
+}
+.message {
+    display: flex;
+    flex-direction: row;
+}
+.message .first {
+    display: flex;
+    flex-direction: row;
+}
+
+.message img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.message h2 {
+    font-size: 15px;
+    margin-right: 10px;
+}
+.message .msg {
+    min-width: 200px;
+    max-width: 550px;
+    font-size: 15px;
+    color: blue;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-wrap: break-word; /*pour ceux qui ecrive sans espace. ceci permet le line breck*/
+}
+.connectUsers {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+}
+.connectUsers h2 {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 25%;
+}
+.users {
+    width: 100%;
+    min-height: 50vh;
+    overflow-y: scroll;
+    border: 2px solid violet;
+}
+.con a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+    color: black;
+    text-decoration: none;
+}
+.con img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+.con p {
+    color: red;
+    margin-left: 5px;
+}
+@media screen and (max-width: 800px) {
+    #contai {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        align-items: center;
+    }
+    .chat {
+        width: 100%;
+        margin-left: 0;
+        background-color: gold;
+        margin-bottom: 10px;
+    }
+    .chat #nam {
+        margin-top: 10px;
+    }
+}

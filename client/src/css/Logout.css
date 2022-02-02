@@ -1,0 +1,8 @@
+.logout {
+    background-color: rgb(9, 230, 232);
+    width: 75%;
+    height: 65vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}

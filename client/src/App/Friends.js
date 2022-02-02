@@ -6,6 +6,7 @@ import {
     acceptsFriends,
     endFriendship,
 } from "../redux/friends/slice.js";
+import thunk from "redux-thunk";
 
 export default function Friends() {
     const dispatch = useDispatch();
@@ -30,6 +31,19 @@ export default function Friends() {
                 dispatch(receiveFriends(friends));
             });
     }, []);
+    /*dispatch(receiveFriends());
+    function receiveFriends() {
+        return async (dispatch) => {
+            const data = await fetch("/friends-wannabes.json").then(
+                (response) => response.json()
+            );
+            console.log("wwwwwwwwwwwwwww", data);
+            dispatch({
+                type: "friends/receivedFriends",
+                payload: { data },
+            });
+        };
+    }*/
 
     function handleAcceptFriendRequest(id) {
         fetch(`/accept-friend-request/${id}.json`, {
@@ -91,7 +105,10 @@ export default function Friends() {
                                 <div key={friend.id} id="friend">
                                     <a href={`/user/${friend.id}`}>
                                         <img
-                                            src={friend.url}
+                                            src={
+                                                friend.url ||
+                                                "/assets/default.jpeg"
+                                            }
                                             onError={(evt) => {
                                                 evt.target.src =
                                                     "/assets/default.jpeg";
@@ -128,7 +145,10 @@ export default function Friends() {
                                 <div key={friend.id} id="friend">
                                     <a href={`/user/${friend.id}`}>
                                         <img
-                                            src={friend.url}
+                                            src={
+                                                friend.url ||
+                                                "/assets/default.jpeg"
+                                            }
                                             onError={(evt) => {
                                                 evt.target.src =
                                                     "/assets/default.jpeg";

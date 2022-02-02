@@ -2,6 +2,7 @@
 -- createdb socialnetwork
 -- psql -d socialnetwork -f server/tables/users.sql
 -- heroku pg:psql -f server/tables/users.sql
+DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS friendships;
 DROP TABLE IF EXISTS reset_codes;
 DROP TABLE IF EXISTS users;

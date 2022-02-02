@@ -179,5 +179,29 @@ router.get("/otherFriendsProfile/:id.json", (req, res) => {
             res.sendStatus(404);
         });
 });
-
+router.post("/connected-users", async (req, res) => {
+    const searchUsers = req.body.users.filter(
+        (id) => id !== req.session.userId
+    );
+    const erg = { users: [] };
+    for (const i of searchUsers) {
+        const { rows } = await db.getConnectedUsers(i);
+        erg.users.push(rows[0]);
+    }
+    res.json(erg.users);
+});
+router.get("/logout.json", (req, res) => {
+    req.session.userId = undefined;
+    res.sendStatus(200);
+});
+router.get("/delete.json", s3.s3deleteUrl, (req, res) => {
+    db.deleteMessages(req.session.userId).then(() => {
+        db.deleteFriendships(req.session.userId).then(() => {
+            db.deleteUsers(req.session.userId).then(() => {
+                req.session.userId = undefined;
+                res.sendStatus(200);
+            });
+        });
+    });
+});
 module.exports = router;

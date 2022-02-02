@@ -1,5 +1,6 @@
 #welcome {
     margin-top: 10%;
+    height: 65vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -12,6 +13,7 @@
 .left h1 {
     margin-bottom: 40px;
 }
+
 .recht {
     background-color: rgb(9, 230, 232);
     border-radius: 5%;

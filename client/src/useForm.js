@@ -5,7 +5,7 @@ export default function useForm(initialValues) {
     const [form, setForm] = useState(initialValues);
 
     function handleChange(evt) {
-        console.log(evt.target.name, evt.target.value);
+        //console.log(evt.target.name, evt.target.value);
 
         setForm({ ...form, [evt.target.name]: evt.target.value });
     }
