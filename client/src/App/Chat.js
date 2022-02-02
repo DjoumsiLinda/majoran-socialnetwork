@@ -151,7 +151,7 @@ export default function Chat() {
                         </div>
                     </div>
                 ) : (
-                    <p>Not People</p>
+                    <p id="cen">Not People</p>
                 )}
             </div>
         </div>

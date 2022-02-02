@@ -106,6 +106,9 @@
     color: red;
     margin-left: 5px;
 }
+#cen {
+    margin-top: 40%;
+}
 @media screen and (max-width: 800px) {
     #contai {
         display: flex;
