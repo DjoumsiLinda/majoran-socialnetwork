@@ -9,24 +9,24 @@ If you see an error like Error: listen EADDRINUSE: address already in use, try s
 
 ### Abschließend eine weitere Überschrift
 
-#TextFormatierung
+##TextFormatierung
 Formatierung Markdown-Syntax Beispiel
 Fett \*_ ** oder \_\_ \_\_ **Fetter Text\*\*
 Kursiv _ * oder \_ \_ *Kursiver Text\*
 
-#zitate
+##zitate
 
 > Ich bin ein Zitat!
 > Für Zitate innerhalb eines Satzes wird ein einzelnes, rückwärts geneigtes Hochkomma verwendet:
 > In diesem Satz möchte ich `ein Zitat` darstellen.
 
-#Links
+##Links
 Für weitere Informationen [hier](http://domain.de) klicken.
 
-#Bilder
+##Bilder
 ![Bildtext](Linkzumbild.jpg "Bildtitel")
 
-#Listen
+##Listen
 Listen werden geordnet oder ungeordnet mit einem Bindestrich (-) oder einer Zahl (1.) begonnen.
 
 Ungeordnet:
@@ -53,7 +53,7 @@ Beide Stile können miteinander kombiniert werden:
 -   Punkt 1
 -   Punkt 2
 
-#Tabellen
+##Tabellen
 | Linke Überschrift | Rechte Überschrift |
 | ------------------ | ------------------ |
 | Etwas Text hier | Ein bisschen hier |
@@ -62,6 +62,6 @@ Beide Stile können miteinander kombiniert werden:
 | :------------ | :-----------: | ------------: |
 | Links         |   Zentriert   |        Rechts |
 
-#Fußnoten
+##Fußnoten
 Hier ist ein Text, der weitere Informationen[^fu1] voraussetzt.
 [^fu1]: Weitere Informationen hier
