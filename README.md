@@ -23,11 +23,15 @@ Kursiv _ * oder \_ \_ *Kursiver Text\*
 
 ## Links
 
-Für weitere Informationen [hier](http://domain.de) klicken.
+Für weitere Informationen [spiced-academy](https://spiced.space/majoran/home) klicken.
+
+## Code-Auszug
+
+Um einen Codeblock zu kennzeichnen, verwenden Sie `` `am Anfang und Ende des Codeblocks.
 
 ## Bilder
 
-![Bildtext](/assets/logo.jpg "Bildtitel")
+![Bildtext](/client/public/assets/logo.png "Bildbeispiel")
 
 ## Listen
 
