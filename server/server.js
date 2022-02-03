@@ -24,6 +24,10 @@ server.use((req, res, next) => {
     console.log("📢", req.method, req.url, req.session);
     next();
 });
+server.use((req, res, next) => {
+    res.setHeader("X-Frame-Options", "DENY");
+    next();
+});
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ websocket
 const http = require("http");
