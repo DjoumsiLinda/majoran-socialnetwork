@@ -6,7 +6,7 @@ import {
     acceptsFriends,
     endFriendship,
 } from "../redux/friends/slice.js";
-import thunk from "redux-thunk";
+//import thunk from "redux-thunk";
 
 export default function Friends() {
     const dispatch = useDispatch();
