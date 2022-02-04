@@ -3,78 +3,38 @@
 Remember to start you project with npm run dev and go to http://localhost:3000 in the browser.
 If you see an error like Error: listen EADDRINUSE: address already in use, try sudo killall node.
 
-# Die erste Überschrift
+# LKD~Fashion is a social network project
 
-## Noch eine Überschrift
+LKD~Fashion is a plattform where you can share your creations. People can create their own account, edit their profile by uploading an picture or editing the bio, login or logout. People can search for friends; send/Accept/Reject friendship requests to each other and chat together.There are too possible to delete their profile, set a new password and see other online people.
 
-### Abschließend eine weitere Überschrift
+# Features
 
-## TextFormatierung
+-   registration with firstname, lastname, email and password (with bcrypt crypted/encrypted)
+-   login and logout with reset password possibility
+-   profile to see information about the user, to edit a picture and to add/delete biography
+-   incremental search to find peoples/friends
+-   Testing
+-   error handling by chats, search friends/peoples
+-   friendship button to send, cancel and accept a friend request.
+-   chat together and see other online people
+-   delete the account and all related data from the data base
 
-Formatierung Markdown-Syntax Beispiel
-Fett \*_ ** oder \_\_ \_\_ **Fetter Text\*\*
-Kursiv _ * oder \_ \_ *Kursiver Text\*
+futher Information:
 
-## zitate
+-   single page application (SPA)
+-   client-site routing with react-router
+-   use of functional components and class components
+-   using Hooks as react feature for functional components
+-   custom Hooks as refactory
+-   community-wide chat room powered by socket.io
 
-> Ich bin ein Zitat!
-> Für Zitate innerhalb eines Satzes wird ein einzelnes, rückwärts geneigtes Hochkomma verwendet:
-> In diesem Satz möchte ich `ein Zitat` darstellen.
+# Technology
 
-## Links
+-   babel, socket.io react, redux, aws, Postgresql, js, html, http
 
-Für weitere Informationen [spiced-academy](https://spiced.space/majoran/home) klicken.
+##
 
-## Code-Auszug
-
-Um einen Codeblock zu kennzeichnen, verwenden Sie `` `am Anfang und Ende des Codeblocks.
-
-## Bilder
-
-![Bildtext](/client/public/assets/logo.png "Bildbeispiel")
-
-## Listen
-
-Listen werden geordnet oder ungeordnet mit einem Bindestrich (-) oder einer Zahl (1.) begonnen.
-
-Ungeordnet:
-
--   ungeordneter Listenpunkt 1
--   ungeordneter Listenpunkt 2
--   ungeordneter Listenpunkt 3
-
-Geordnet:
-
-1. geordneter Listenpunkt 1
-2. geordneter Listenpunkt 2
-3. geordneter Listenpunkt 3
-
-Beide Stile können miteinander kombiniert werden:
-
-1. Titel 1
-
--   Punkt 1
--   Punkt 2
-
-2. Titel 2
-
--   Punkt 1
--   Punkt 2
-
-## Tabellen
-
-| Linke Überschrift | Rechte Überschrift |
-| ----------------- | ------------------ |
-| Etwas Text hier   | Ein bisschen hier  |
-
-| Überschrift 1 | Überschrift 2 | Überschrift 3 |
-| :------------ | :-----------: | ------------: |
-| Links         |   Zentriert   |        Rechts |
-
-## Fußnoten
-
-Hier ist ein Text, der weitere Informationen[^fu1] voraussetzt.
-[^fu1]: Weitere Informationen hier
+© Funky Chicken, Inc 04.02.2020
 
 ### +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -6,6 +6,7 @@ export default function FindPeople() {
     const [people, setPeople] = useState("");
     const [peoples, setPeoples] = useState([]);
     const [loadMore, setLoadMore] = useState(false);
+    const [error, setError] = useState(false);
 
     //When you call useEffect, you pass it a function.
     //The function that you pass will be called immediately after your component has been rendered.
@@ -30,6 +31,9 @@ export default function FindPeople() {
                     setPeoples(data);
                 }
                 // if ignore is true we just ignore the response
+            })
+            .catch(() => {
+                setError(true);
             });
 
         // cleanup function:
@@ -118,6 +122,16 @@ export default function FindPeople() {
                     </button>
                 )}
             </div>
+            {error && (
+                <div id="Erroseite">
+                    <h1>:(</h1>
+                    <h3>Internal Server Error</h3>
+                    <p>
+                        while trying to load
+                        <a href="{{link}}"> /user/{people} </a>
+                    </p>
+                </div>
+            )}
         </div>
     );
 }

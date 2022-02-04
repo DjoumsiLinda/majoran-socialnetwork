@@ -36,7 +36,14 @@ export default function OtherProfile() {
     if (!user) {
         return (
             <div className="otherProfile">
-                <p id="error">Error</p>
+                <div id="Erroseite">
+                    <h1>:(</h1>
+                    <h3>Internal Server Error</h3>
+                    <p>
+                        while trying to load
+                        <a href="{{link}}"> /user/{id} </a>
+                    </p>
+                </div>
             </div>
         );
     }
@@ -44,7 +51,14 @@ export default function OtherProfile() {
         <div className="otherProfile">
             <div id="left">
                 {error ? (
-                    <p id="error">Error</p>
+                    <div id="Erroseite">
+                        <h1>:(</h1>
+                        <h3>Internal Server Error</h3>
+                        <p>
+                            while trying to load
+                            <a href="{{link}}"> /user/{id} </a>
+                        </p>
+                    </div>
                 ) : (
                     <div id="user">
                         <div id="friendBtn">
