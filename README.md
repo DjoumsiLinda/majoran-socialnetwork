@@ -13,7 +13,7 @@ LKD~Fashion is a plattform where you can share your creations. People can create
 -   login and logout with reset password possibility
 -   profile to see information about the user, to edit a picture and to add/delete biography
 -   incremental search to find peoples/friends
--   Testing
+-   Testing with jest
 -   error handling by chats, search friends/peoples
 -   friendship button to send, cancel and accept a friend request.
 -   chat together and see other online people
@@ -21,20 +21,54 @@ LKD~Fashion is a plattform where you can share your creations. People can create
 
 futher Information:
 
+-   custom Hooks as refactory
 -   single page application (SPA)
 -   client-site routing with react-router
 -   use of functional components and class components
 -   using Hooks as react feature for functional components
--   custom Hooks as refactory
 -   community-wide chat room powered by socket.io
+
+---
 
 # Technology
 
--   babel, socket.io react, redux, aws, Postgresql, js, html, http
+babel-loader,bcryptjs, cookie-session, socket.io, react, redux, aws-sdk, Postgresql, jest, webpack, express, uid-safe, js, html, http, json
 
 ##
 
-© Funky Chicken, Inc 04.02.2020
+##
+
+---
+
+**© Funky Chicken, Inc 04.02.2020**
+
+<!--
+
+High Level Description:
+…
+
+Website:
+…
+
+Tags:
+- aws
+- aws-s3
+- aws-ses
+- components
+- css
+- design
+- fetch
+- heroku
+- html
+- js
+- node-js
+- pagination
+- postresql
+- react
+- s3-bucket
+- spicedacademy
+
+-->
 
 ### +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
